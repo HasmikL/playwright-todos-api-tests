@@ -101,7 +101,7 @@ const partialUpdatedData = {
    body: "HELLO !!!"
 }
 
-test.describe('JSONPlaceholder API Posts', async ()=>{
+test.describe('JSONPlaceholder API Posts @get', async ()=>{
 
   test('Get Request For Posts',async ({request})=>{
 
@@ -125,7 +125,7 @@ test.describe('JSONPlaceholder API Posts', async ()=>{
 
   });
   
-  test(`Get Request Post for ${postId}`, async ({ request }) => {
+  test(`Get Request Post for ${postId} @get `, async ({ request }) => {
 
   const response = await request.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 
@@ -140,7 +140,7 @@ test.describe('JSONPlaceholder API Posts', async ()=>{
   expect(post).toHaveProperty('body');
 });
 
-  test(`Get Request Comments for ${postId} - with query params`, async ({ request }) => {
+  test(`Get Request Comments for ${postId} - with query params @get`, async ({ request }) => {
 
   const response = await request.get(
     `https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
@@ -160,7 +160,7 @@ test.describe('JSONPlaceholder API Posts', async ()=>{
   }
   });
 
-  test('POST create a new Post',async({request})=>{
+  test('POST create a new Post @post',async({request})=>{
     const response = await request.post('https://jsonplaceholder.typicode.com/posts', {
       data: newPost
     });
@@ -177,7 +177,7 @@ test.describe('JSONPlaceholder API Posts', async ()=>{
 
   });
 
-  test(`PUT update postID ${postId}`,async ({request})=>{
+  test(`PUT update postID ${postId} @put`,async ({request})=>{
 
     const response = await request.put(`https://jsonplaceholder.typicode.com/posts/${postId}`,{
       data: updatedData
@@ -196,7 +196,7 @@ test.describe('JSONPlaceholder API Posts', async ()=>{
 
   });
   
-  test(`PATCH partial update PostID ${postId}`,async ({request})=>{
+  test(`PATCH partial update PostID ${postId} @patch`,async ({request})=>{
 
     const response = await request.patch(`https://jsonplaceholder.typicode.com/posts/${postId}`,{
       data: partialUpdatedData
@@ -212,7 +212,7 @@ test.describe('JSONPlaceholder API Posts', async ()=>{
 
   });
 
-  test(`DELETE post postID ${postId}`, async({request})=>{
+  test(`DELETE post postID ${postId} @delete`, async({request})=>{
       const response = await request.delete(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 
       expect(response.ok()).toBeTruthy();
@@ -223,7 +223,7 @@ test.describe('JSONPlaceholder API Posts', async ()=>{
 
     });
 
-    test('GET NEgative Test', async({request})=>{
+    test('GET NEgative Test @get', async({request})=>{
       const resposne = await request.get('https://jsonplaceholder.typicode.com/posts/123424243423');
 
       expect(resposne.ok()).toBe(false);

@@ -31,7 +31,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Todos API Tests', async() => {
    
-    test(' Get All Todos',async ({request}) => {
+    test(' Get All Todos @get',async ({request}) => {
 
         const response = await request.get('https://jsonplaceholder.typicode.com/todos');
 
@@ -55,7 +55,7 @@ test.describe('Todos API Tests', async() => {
 
   });
 
-   test('Get 9th Todo',async ({request}) => {
+   test('Get 9th Todo @get',async ({request}) => {
 
     const response = await request.get('https://jsonplaceholder.typicode.com/todos/9');
 
@@ -76,7 +76,7 @@ test.describe('Todos API Tests', async() => {
   });
 
 
-   test(`Get ${todoId}th Todo`, async ({ request }) => {
+   test(`Get ${todoId}th Todo @get`, async ({ request }) => {
 
 
         const response = await request.get(`https://jsonplaceholder.typicode.com/todos/${todoId}`);
@@ -92,7 +92,7 @@ test.describe('Todos API Tests', async() => {
         expect(todo).toHaveProperty('completed');
 });   
 
-   test('POST- create a new TODO', async({request})=>{
+   test('POST- create a new TODO @post', async({request})=>{
     const response = await request.post('https://jsonplaceholder.typicode.com/todos',{
       data:newTODO
     });
@@ -111,7 +111,7 @@ test.describe('Todos API Tests', async() => {
     
    });
 
-   test(`PUT- update TODO ${todoId}`, async({request})=>{
+   test(`PUT- update TODO ${todoId} @put`, async({request})=>{
     const response = await request.put(`https://jsonplaceholder.typicode.com/todos/${todoId}`,{
       data:updatedToDO
     });
@@ -130,7 +130,7 @@ test.describe('Todos API Tests', async() => {
     
    });
 
-   test(`PATCH- partially update TODO ${todoId}`, async({request})=>{
+   test(`PATCH- partially update TODO ${todoId} @patch`, async({request})=>{
     const response = await request.patch(`https://jsonplaceholder.typicode.com/todos/${todoId}`,{
       data:partialUpdatedToDo
     });
@@ -148,7 +148,7 @@ test.describe('Todos API Tests', async() => {
     
    });
 
-   test(`DELETE- TODO ${todoId}`, async({request})=>{
+   test(`DELETE- TODO ${todoId} @delete`, async({request})=>{
     const response = await request.delete(`https://jsonplaceholder.typicode.com/todos/${todoId}`,{
       
     });
@@ -163,7 +163,7 @@ test.describe('Todos API Tests', async() => {
     
    });
 
-   test('GET Negative Test', async({request})=>{
+   test('GET Negative Test @get', async({request})=>{
       const resposne = await request.get('https://jsonplaceholder.typicode.com/todos/999999999999999');
 
       expect(resposne.ok()).toBe(false);
